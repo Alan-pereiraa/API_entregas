@@ -1,65 +1,61 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📦 API de Entregas — Simulação dos Correios
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é um backend de API REST que simula o funcionamento de um sistema de entregas semelhante ao dos Correios.  
+Ele permite gerenciar agências, unidades, clientes, encomendas, serviços, fretes e rastreamentos.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🗂 Modelagem e Decisões de Projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+A modelagem do banco de dados foi desenvolvida para representar fielmente o fluxo de trabalho dos Correios, desde a postagem de um pacote até sua entrega final.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Estrutura de Entidades e Relacionamentos
 
-## Learning Laravel
+- **Agência e Unidades**
+  - Cada agência pode ter diversas unidades operacionais.
+  - As unidades executam etapas como postagem, triagem e entrega.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Funcionários**
+  - Associados a uma unidade, responsáveis pelo atendimento e processamento de encomendas.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Clientes**
+  - Diferencia clientes pessoa física (`cliente_pessoa`) e pessoa jurídica (`cliente_empresa`), mantendo dados centrais na tabela `cliente` para padronização.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Encomendas**
+  - Contêm peso, data de postagem, previsão de entrega, e estão vinculadas a remetente, destinatário, serviço e frete.
 
-## Laravel Sponsors
+- **Serviços**
+  - Representam modalidades de envio (PAC, Sedex etc.) com preço base e prazo.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Fretes**
+  - Associados a uma encomenda, guardam informações de custo e permitem simular cálculos de envio.
 
-### Premium Partners
+- **Rastreamentos**
+  - Registram o histórico de status da encomenda, possibilitando o acompanhamento em tempo real.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🎯 Como a Modelagem Atende ao Tema
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Simulação realista**: Inclui entidades e relacionamentos que refletem o funcionamento dos Correios.
+2. **Flexibilidade**: Suporte a múltiplos tipos de clientes e serviços.
+3. **Escalabilidade**: Estrutura pronta para integração futura com APIs reais ou novos módulos de rastreamento.
+4. **Organização**: Separação lógica entre entidades e relacionamentos para facilitar manutenção e evolução do projeto.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📌 Diagrama ER
 
-## Security Vulnerabilities
+![Diagrama ER](docs/diagrama_api_correios.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🚀 Tecnologias Utilizadas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# API_entregas
->>>>>>> c7173e92e0865c40b0babc54a5d36cf33e9d1b7a
+- **Node.js** + **Express** — Backend e rotas
+- **PostgreSQL/MySQL** — Banco de dados relacional
+- **Sequelize/Prisma** — ORM para manipulação de dados
+- **Docker** — Ambiente de desenvolvimento isolado
+- **Swagger** — Documentação da API
+
+---
