@@ -52,10 +52,7 @@ A modelagem do banco de dados foi desenvolvida para representar fielmente o flux
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Node.js** + **Express** — Backend e rotas
-- **PostgreSQL/MySQL** — Banco de dados relacional
-- **Sequelize/Prisma** — ORM para manipulação de dados
-- **Docker** — Ambiente de desenvolvimento isolado
-- **Swagger** — Documentação da API
-
+- **PHP** + **Laravel** — Backend e rotas
+- **MySQL** — Banco de dados relacional
+- **Eloquent** — ORM para manipulação de dados
 ---
