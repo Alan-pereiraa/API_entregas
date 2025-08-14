@@ -46,7 +46,7 @@ A modelagem do banco de dados foi desenvolvida para representar fielmente o flux
 
 ## 📌 Diagrama ER
 
-![Diagrama ER](docs/diagrama_api_correios.png)
+![Diagrama ER](docs/api_entrega_1.png)
 
 ---
 
