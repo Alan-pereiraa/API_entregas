@@ -22,7 +22,7 @@ A modelagem do banco de dados foi desenvolvida para representar fielmente o flux
   - Diferencia clientes pessoa física (`cliente_pessoa`) e pessoa jurídica (`cliente_empresa`), mantendo dados centrais na tabela `cliente` para padronização.
 
 - **Encomendas**
-  - Contêm peso, data de postagem, previsão de entrega, e estão vinculadas a remetente, destinatário, serviço e frete.
+  - Contêm peso, data de postagem e estão vinculadas a remetente, destinatário, serviço.
 
 - **Serviços**
   - Representam modalidades de envio (PAC, Sedex etc.) com preço base e prazo.
