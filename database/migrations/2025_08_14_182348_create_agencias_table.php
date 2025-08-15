@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('frete', function (Blueprint $table) {
+        Schema::create('agencias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('encomenda_id');
-            $table->foreign('encomenda_id')->references('id')->on('encomendas')->onDelete('cascade');
-            $table->decimal('valor', 8, 2);
+            $table->string('razao_social', 50)->unique();
+            $table->string('nome_fantasia', 100);
+            $table->string('cnpj', 14)->unique();
+            $table->string('telefone', 11)->unique();
+            $table->string('email', 50)->unique();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('frete');
+        Schema::dropIfExists('agencias');
     }
 };
