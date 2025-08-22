@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('cpf', 11)->unique();
             $table->unsignedBigInteger('cliente_id'); 
-            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');// FK
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');// FK
         });
     }
 

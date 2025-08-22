@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome_fantasia', 100);
             $table->string('cnpj', 14)->unique();
             $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
         });
     }
 
