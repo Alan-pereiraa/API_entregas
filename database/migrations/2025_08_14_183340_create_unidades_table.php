@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('endereco', 100);
             $table->boolean('unidade_ativa')->default(true);
             $table->unsignedBigInteger('agencia_id');
-            $table->foreign('agencia_id')->references('id')->on('agencia')->onDelete('cascade'); // FK
+            $table->foreign('agencia_id')->references('id')->on('agencias')->onDelete('cascade'); // FK
             $table->timestamps();
         });
     }
