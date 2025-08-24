@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente_Empresa extends Model
+class ClientePessoa extends Model
 {
     protected $fillable = [
-        'razao_social',
-        'nome_fantasia',
-        'cnpj',
-        'cliente_id' // FK
+        'nome',
+        'cpf',
+        'cliente_id' 
     ];
 
     public function cliente (){

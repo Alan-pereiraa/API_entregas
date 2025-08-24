@@ -12,7 +12,7 @@ class ClientePessoaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('clientes_pessoa')->insert([
+        DB::table('cliente_pessoas')->insert([
             [
                 'nome' => 'João Silva',
                 'cpf' => '11122233344',
