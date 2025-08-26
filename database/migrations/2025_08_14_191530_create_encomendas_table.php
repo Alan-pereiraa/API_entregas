@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('encomendas', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('data_hora_postagem');
             $table->decimal('peso', 8, 2);
             $table->unsignedBigInteger('cliente_remetente_id'); 
             $table->foreign('cliente_remetente_id')->references('id')->on('clientes')->onDelete('cascade'); // FK

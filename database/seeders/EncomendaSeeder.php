@@ -14,7 +14,6 @@ class EncomendaSeeder extends Seeder
     {
         DB::table('encomendas')->insert([
             [
-                'data_hora_postagem' => now(),
                 'peso' => 2.50,
                 'cliente_remetente_id' => 1,
                 'cliente_destinatario_id' => 2,
@@ -23,7 +22,6 @@ class EncomendaSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'data_hora_postagem' => now()->subDays(1),
                 'peso' => 1.20,
                 'cliente_remetente_id' => 2,
                 'cliente_destinatario_id' => 3,
@@ -32,7 +30,6 @@ class EncomendaSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'data_hora_postagem' => now()->subHours(5),
                 'peso' => 3.75,
                 'cliente_remetente_id' => 3,
                 'cliente_destinatario_id' => 1,

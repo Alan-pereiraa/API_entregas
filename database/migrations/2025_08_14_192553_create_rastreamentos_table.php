@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('rastreamentos', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->timestamp('data_hora');
             $table->string('observacoes', 100)->nullable();
             $table->unsignedBigInteger('encomenda_id');
             $table->foreign('encomenda_id')->references('id')->on('encomendas')->onDelete('cascade'); //FK

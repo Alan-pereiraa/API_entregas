@@ -9,11 +9,11 @@ class Unidade extends Model
     protected $fillable = [
         'telefone',
         'endereco',
-        'unidade_ativa', // CAST
-        'agencia_id' // FK
+        'unidade_ativa', 
+        'agencia_id' 
     ];
 
-    protected $cats = [
+    protected $casts = [
         'unidade_ativa' => 'boolean'
     ];
 

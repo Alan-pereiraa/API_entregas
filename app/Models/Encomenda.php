@@ -10,7 +10,7 @@ class Encomenda extends Model
         'data_hora_postagem',
         'peso',
         'cliente_remetente_id', // FK
-        'cliente_destinario_id', // FK
+        'cliente_destinatario_id', // FK
         'servico_id', // FK
     ];
 
