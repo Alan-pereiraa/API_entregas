@@ -9,9 +9,14 @@ class Rastreamento extends Model
     protected $fillable = [
         'status',
         'data_hora',
+        'concluido',
         'observacoes',
         'encomenda_id', // FK
         'unidade_id', // FK
+    ];
+
+    protected $casts = [
+        'concluido' => 'boolean'
     ];
 
     public function unidade (){

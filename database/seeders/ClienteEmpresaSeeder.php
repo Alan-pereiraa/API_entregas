@@ -12,7 +12,7 @@ class ClienteEmpresaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('clientes_empresa')->insert([
+        DB::table('cliente_empresas')->insert([
                         [
                 'razao_social' => 'Comércio Digital Ltda.',
                 'nome_fantasia' => 'CDL Marketing',
