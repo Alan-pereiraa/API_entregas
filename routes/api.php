@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::post('/logout', [UserController::class, 'logout']);
-    Route::get('rastreamento/encomenda/{id}', [RastreamentoController::class, 'showRastreamentosRelatedToEncomenda']);
+    Route::get('/rastreamento/encomenda/{id}', [RastreamentoController::class, 'showRastreamentosRelatedToEncomenda']);
 });
 
 ?>

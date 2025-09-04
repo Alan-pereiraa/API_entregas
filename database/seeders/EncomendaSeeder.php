@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Encomenda;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 
 class EncomendaSeeder extends Seeder
 {
@@ -12,31 +13,6 @@ class EncomendaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('encomendas')->insert([
-            [
-                'peso' => 2.50,
-                'cliente_remetente_id' => 1,
-                'cliente_destinatario_id' => 2,
-                'servico_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'peso' => 1.20,
-                'cliente_remetente_id' => 2,
-                'cliente_destinatario_id' => 3,
-                'servico_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'peso' => 3.75,
-                'cliente_remetente_id' => 3,
-                'cliente_destinatario_id' => 1,
-                'servico_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        Encomenda::factory(10)->create();
     }
 }

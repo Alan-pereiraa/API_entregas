@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('razao_social', 50)->unique();
             $table->string('nome_fantasia', 100);
             $table->string('cnpj', 14)->unique();
-            $table->string('telefone', 11)->unique();
+            $table->string('telefone', 20)->unique();
             $table->string('email', 50)->unique();
             $table->timestamps();
         });

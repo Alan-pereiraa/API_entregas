@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Rastreamento extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'status',
         'data_hora',

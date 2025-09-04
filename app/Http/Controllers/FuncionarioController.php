@@ -29,10 +29,10 @@ class FuncionarioController extends Controller
             'endereco' => 'required|string|min:10|max:100',
             'telefone' => 'required|string|min:11|max:11|unique:funcionarios',
             'unidade_id' => 'required|exists:unidades,id',
-            'senha' => 'required|string|min:6'
+            'password' => 'required|string|min:6'
         ]);
 
-        $funcionario = Funcionario::create($validated);
+        $funcionario = Funcionario::create([]);
         return response()->json($funcionario, 201);
     }
 
