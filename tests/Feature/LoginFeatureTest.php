@@ -30,7 +30,7 @@ class LoginFeatureTest extends TestCase
     // Test que verifica o registro de novo usuário
     public function test_register_new_user ()
     {
-        $new_user = User::factory()->user()->make(); // Cria novo usuário
+        $new_user = User::factory()->make(); // Cria novo usuário
 
         $response = $this->postJson('/api/register', [
             'name' => $new_user->name,

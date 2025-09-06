@@ -24,7 +24,7 @@ class ClienteEmpresaFactory extends Factory
 
         return [
             'cliente_id' => $cliente->id, // FK,
-            'razao_social' => $this->faker->company(),
+            'razao_social' => $this->faker->unique()->company(),
             'nome_fantasia' => $this->faker->company(),
             'cnpj' => $this->faker->cnpj(false),
         ];
