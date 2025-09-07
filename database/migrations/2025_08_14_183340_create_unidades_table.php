@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->id();
-            $table->string('telefone', 11)->unique();
+            $table->string('telefone', 20)->unique();
             $table->string('endereco', 100);
             $table->boolean('unidade_ativa')->default(true);
             $table->unsignedBigInteger('agencia_id');

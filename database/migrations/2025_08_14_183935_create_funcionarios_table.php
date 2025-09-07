@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('cpf', 11)->unique();
             $table->string('nome', 50);
-            $table->string('email', 50)->unique()->nullable();
+            $table->string('email')->unique();
             $table->string('endereco', 100);
-            $table->string('telefone', 11)->unique();
+            $table->string('telefone', 20)->unique();
             $table->unsignedBigInteger('unidade_id');
             $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('cascade'); // FK
             $table->string('senha');

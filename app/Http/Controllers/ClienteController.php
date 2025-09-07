@@ -19,13 +19,13 @@ class ClienteController extends Controller
         $data = $requestType ? Cliente::with($requestType)->where('tipo', $requestType)->get() : Cliente::all();
 
         $response = $data->map(function ($cliente) use ($requestType) {
-             $baseArray = $cliente;
+            $baseArray = $cliente;
 
-             if (!$requestType) {
+            if (!$requestType) {
                 $baseArray[$cliente->tipo] = $cliente->tipo === 'pessoa' ?
                     $cliente->pessoa
                     : $cliente->empresa;
-             }
+            }
 
             return $baseArray;
         });

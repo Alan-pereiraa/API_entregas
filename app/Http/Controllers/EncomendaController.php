@@ -46,7 +46,7 @@ class EncomendaController extends Controller
         ]);
 
         $encomenda = Encomenda::create($validated);
-        $quantidade_unidades = rand(1, $max_unidades);
+        $quantidade_unidades = rand(1, 5);
         $rastreios = [];    
         $unidades = Unidade::inRandomOrder()->take($quantidade_unidades)->get();
         foreach ($unidades as $unidade) {
@@ -63,7 +63,10 @@ class EncomendaController extends Controller
         $rastreios =  $encomenda->rastreamento()->createMany($rastreios);
         $encomenda['rastreios'] = $rastreios;
         
-        return response()->json($encomenda);
+        return response()->json([
+            'encomenda' => $encomenda,
+            'data_prevista_entrega' => $encomenda->dataPrevistaEntrega()->toDateString(),
+        ], 201);
     }
 
     public function update(Request $request, string $id): JsonResponse

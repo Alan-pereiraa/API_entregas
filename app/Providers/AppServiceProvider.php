@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route; 
+use Illuminate\Support\Facades\Schema;
 use App\Models\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\Sanctum;
 use App\Http\Middleware\ValidateRole;
@@ -30,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
             ->group(function () {
                 require base_path('routes/api.php');
             });
+
+        Schema::defaultStringLength(191);
     }
 }
