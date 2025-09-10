@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class EncomendaFactory extends Factory
 {
     protected $model = Encomenda::class;
+
     public function definition(): array
     {
         $remetente = Cliente::inRandomOrder()->first() ?? Cliente::factory()->create();
@@ -29,12 +30,12 @@ class EncomendaFactory extends Factory
 
     public function configure()
     {
-        
+
         return $this->afterCreating(function (Encomenda $encomenda) {
             $servico = $encomenda->servico; // pega o serviço associado à encomenda
-    
+
             // regra de cálculo do frete
-           $valor = $servico->preco_base + ($servico->preco_base * 0.05 * $encomenda->peso);
+            $valor = $servico->preco_base + ($servico->preco_base * 0.05 * $encomenda->peso);
 
             $encomenda->frete()->create([
                 'encomenda_id' => $encomenda->id,

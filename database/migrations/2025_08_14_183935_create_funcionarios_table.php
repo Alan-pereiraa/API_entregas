@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('telefone', 20)->unique();
             $table->unsignedBigInteger('unidade_id');
             $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('cascade'); // FK
-            $table->string('senha');
             $table->timestamps();
         });
     }

@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ClientePessoa extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'nome',
         'cpf',
-        'cliente_id' 
+        'cliente_id',
     ];
 
-    public function cliente (){
+    public function cliente()
+    {
         return $this->belongsTo(Cliente::class);
     }
 }

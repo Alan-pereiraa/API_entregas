@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Funcionario;
 use App\Models\Unidade;
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class FuncionarioFactory extends Factory
 {
-
     protected $model = Funcionario::class;
 
     public function definition(): array
@@ -25,7 +23,6 @@ class FuncionarioFactory extends Factory
             'endereco' => $this->faker->address(),
             'telefone' => $this->faker->unique()->phoneNumber(),
             'unidade_id' => Unidade::factory(),
-            'senha' => Hash::make('senha')
         ];
     }
 }

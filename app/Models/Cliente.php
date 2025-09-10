@@ -4,20 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne; 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Cliente extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'endereco',
         'telefone',
         'email',
-        'tipo'
+        'tipo',
     ];
 
-    public function encomenda (){
+    public function encomenda()
+    {
         return $this->hasMany(Encomenda::class);
     }
 

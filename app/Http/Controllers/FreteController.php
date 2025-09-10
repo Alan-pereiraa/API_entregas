@@ -1,25 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Frete;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Models\Frete;
 
 class FreteController extends Controller
 {
     public function index(): JsonResponse
     {
         $fretes = Frete::all();
+
         return response()->json($fretes);
     }
 
     public function show(string $id): JsonResponse
     {
         $frete = Frete::findOrFail($id);
+
         return response()->json($frete);
     }
 
-    public function destroy ($id): JsonResponse
+    public function destroy($id): JsonResponse
     {
         $frete = Frete::findOrFail($id);
         $frete->delete();
@@ -36,11 +39,12 @@ class FreteController extends Controller
                 'numeric',
                 'min:0',
                 'max:100000',
-                'regex:/^\d+(\.\d{1,2})?$/'
+                'regex:/^\d+(\.\d{1,2})?$/',
             ],
         ]);
 
         $frete = Frete::create($validated);
+
         return response()->json($frete, 201);
     }
 
@@ -54,11 +58,12 @@ class FreteController extends Controller
                 'numeric',
                 'min:0',
                 'max:100000',
-                'regex:/^\d+(\.\d{1,2})?$/'
+                'regex:/^\d+(\.\d{1,2})?$/',
             ],
         ]);
 
         $frete->update($validated);
+
         return response()->json($frete);
     }
 }

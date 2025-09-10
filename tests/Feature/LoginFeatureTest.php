@@ -11,7 +11,7 @@ class LoginFeatureTest extends TestCase
     use RefreshDatabase;
 
     // Teste de login do usuário
-    public function test_login_user ()
+    public function test_login_user()
     {
         $this->seed();
 
@@ -19,16 +19,16 @@ class LoginFeatureTest extends TestCase
 
         $response = $this->postJson('/api/login', [
             'email' => $user_database->email,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response->assertStatus(200)->assertJsonFragment([
-            $user_database->email
+            $user_database->email,
         ]);
     }
 
     // Test que verifica o registro de novo usuário
-    public function test_register_new_user ()
+    public function test_register_new_user()
     {
         $new_user = User::factory()->make(); // Cria novo usuário
 
@@ -39,7 +39,7 @@ class LoginFeatureTest extends TestCase
         ]);
 
         $response->assertStatus(201)->assertJsonFragment([
-            $new_user->name
+            $new_user->name,
         ]);
     }
 }

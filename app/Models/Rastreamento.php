@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rastreamento extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'status',
         'data_hora',
@@ -18,14 +19,16 @@ class Rastreamento extends Model
     ];
 
     protected $casts = [
-        'concluido' => 'boolean'
+        'concluido' => 'boolean',
     ];
 
-    public function unidade (){
+    public function unidade()
+    {
         return $this->belongsTo(Unidade::class);
     }
 
-    public function encomenda (){
+    public function encomenda()
+    {
         return $this->belongsTo(Encomenda::class);
     }
 }

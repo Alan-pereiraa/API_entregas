@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Funcionario extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'cpf',
         'nome',
@@ -15,10 +16,10 @@ class Funcionario extends Model
         'endereco',
         'telefone',
         'unidade_id', // FK
-        'senha'
     ];
 
-    public function unidade (){
+    public function unidade()
+    {
         return $this->belongsTo(Unidade::class);
     }
 }

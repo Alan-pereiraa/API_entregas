@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ServicoFactory extends Factory
 {
-
     protected $model = Servico::class;
 
     public function definition(): array
