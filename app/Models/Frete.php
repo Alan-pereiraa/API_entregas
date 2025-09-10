@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Frete extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'encomenda_id', // FK
-        'valor'
+        'valor',
     ];
 
-    public function encomenda (){
+    public function encomenda()
+    {
         return $this->belongsTo(Encomenda::class);
     }
 }

@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Agencia extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'razao_social',
         'nome_fantasia',
         'cnpj',
         'telefone',
-        'email'
+        'email',
     ];
 
-    public function unidades (){
+    public function unidades()
+    {
         return $this->hasMany(Unidade::class);
     }
 }

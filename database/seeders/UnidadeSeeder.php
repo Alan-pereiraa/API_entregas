@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Unidade;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UnidadeSeeder extends Seeder
 {

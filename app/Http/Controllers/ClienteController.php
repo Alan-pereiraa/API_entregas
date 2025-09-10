@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+
 use App\Models\Cliente;
 use App\Models\ClienteEmpresa;
 use App\Models\ClientePessoa;
 use App\Models\Encomenda;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class ClienteController extends Controller
 {
-    public function index (Request $request): JsonResponse
-    {   
+    public function index(Request $request): JsonResponse
+    {
         $requestType = $request->query('tipo');
         $requestType = in_array($requestType, ['pessoa', 'empresa']) ? $requestType : false;
         $data = $requestType ? Cliente::with($requestType)->where('tipo', $requestType)->get() : Cliente::all();
@@ -21,7 +22,7 @@ class ClienteController extends Controller
         $response = $data->map(function ($cliente) use ($requestType) {
             $baseArray = $cliente;
 
-            if (!$requestType) {
+            if (! $requestType) {
                 $baseArray[$cliente->tipo] = $cliente->tipo === 'pessoa' ?
                     $cliente->pessoa
                     : $cliente->empresa;
@@ -33,7 +34,7 @@ class ClienteController extends Controller
         return response()->json($response);
     }
 
-    public function show (string $id): JsonResponse
+    public function show(string $id): JsonResponse
     {
         $cliente = Cliente::findOrFail($id);
         $cliente->tipo === 'pessoa'
@@ -43,7 +44,7 @@ class ClienteController extends Controller
         return response()->json($cliente);
     }
 
-    public function destroy (string $id): JsonResponse 
+    public function destroy(string $id): JsonResponse
     {
         $clienteAssociatedToEncomenda = Encomenda::where('cliente_remetente_id', $id)
             ->orWhere('cliente_destinatario_id', $id)
@@ -52,12 +53,13 @@ class ClienteController extends Controller
         if ($clienteAssociatedToEncomenda) {
             return response()->json([
                 'message' => 'Cliente associado a alguma encomenda!',
-                'error' => 'Conflict'
+                'error' => 'Conflict',
             ], 409);
         }
 
         $cliente = Cliente::findOrFail($id);
         $cliente->delete();
+
         return response()->json(null, 204);
     }
 
@@ -67,23 +69,23 @@ class ClienteController extends Controller
             'tipo' => 'required|in:pessoa,empresa',
             'endereco' => 'required|string|min:10|max:50',
             'telefone' => 'required|string|min:11|max:11|unique:clientes',
-            'email' => 'required|email|min:10|max:50|unique:clientes'
+            'email' => 'required|email|min:10|max:50|unique:clientes',
         ];
 
         if ($request->tipo === 'pessoa') {
             $rules['nome'] = 'required|string|min:10|max:100';
             $rules['cpf'] = 'required|string|min:11|max:11|unique:cliente_pessoas';
         } else {
-             $rules['razao_social'] = 'required|string|min:10|max:50|unique:cliente_empresas';
-             $rules['nome_fantasia'] = 'required|string|min:10|max:100|unique:cliente_empresas';
-             $rules['cnpj'] = 'required|string|min:14|max:14|unique:cliente_empresas';
+            $rules['razao_social'] = 'required|string|min:10|max:50|unique:cliente_empresas';
+            $rules['nome_fantasia'] = 'required|string|min:10|max:100|unique:cliente_empresas';
+            $rules['cnpj'] = 'required|string|min:14|max:14|unique:cliente_empresas';
         }
 
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return response()->json([
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -97,6 +99,7 @@ class ClienteController extends Controller
             : ClienteEmpresa::create($cliente_informations);
 
         $cliente[$cliente->tipo] = $cliente_informations;
+
         return response()->json($cliente);
     }
 
@@ -115,7 +118,7 @@ class ClienteController extends Controller
             'tipo' => 'required|in:pessoa,empresa',
             'endereco' => 'sometimes|string|min:10|max:50',
             'telefone' => ['sometimes', 'string', 'min:11', 'max:11', Rule::unique('clientes')->ignore($cliente->id)],
-            'email' => ['sometimes', 'email', 'min:10', 'max:50', Rule::unique('clientes')->ignore($cliente->id)]
+            'email' => ['sometimes', 'email', 'min:10', 'max:50', Rule::unique('clientes')->ignore($cliente->id)],
         ];
 
         if ($cliente->tipo === 'pessoa') {
@@ -128,7 +131,7 @@ class ClienteController extends Controller
             $cliente_informations_fields = $clientEmpresaFields;
             $cliente_informations = ClienteEmpresa::where('cliente_id', $cliente->id)->first();
 
-            $rules['razao_social'] = ['sometimes', 'string', 'min:10', 'max:50', Rule::unique('cliente_empresas')->ignore($cliente_informations->id)]; 
+            $rules['razao_social'] = ['sometimes', 'string', 'min:10', 'max:50', Rule::unique('cliente_empresas')->ignore($cliente_informations->id)];
             $rules['nome_fantasia'] = ['sometimes', 'string', 'min:10', 'max:100', Rule::unique('cliente_empresas')->ignore($cliente_informations->id)];
             $rules['cnpj'] = ['sometimes', 'string', 'min:14', 'max:14', Rule::unique('cliente_empresas')->ignore($cliente_informations->id)];
         }
@@ -137,7 +140,7 @@ class ClienteController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -148,6 +151,7 @@ class ClienteController extends Controller
         $cliente_informations->update($client_informations_data);
 
         $cliente[$cliente->tipo] = $cliente_informations;
+
         return response()->json($cliente);
     }
 }

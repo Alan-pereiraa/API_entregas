@@ -13,10 +13,11 @@ class Servico extends Model
         'nome',
         'descricao',
         'preco_base',
-        'prazo_dias'
+        'prazo_dias',
     ];
 
-    public function encomenda (){
+    public function encomenda()
+    {
         return $this->hasMany(Encomenda::class);
     }
 }

@@ -2,16 +2,15 @@
 
 namespace Tests\Feature;
 
-use App\Http\Middleware\ValidateRole;
+use App\Models\Cliente;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\Cliente;
 
 class EncomendaFeatureTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_create_new_encomenda ()
+    public function test_create_new_encomenda()
     {
         $this->seed();
 
@@ -22,7 +21,7 @@ class EncomendaFeatureTest extends TestCase
             'peso' => 23.0,
             'cliente_remetente_id' => $cliente_remetente->id,
             'cliente_destinatario_id' => $cliente_destinatario->id,
-            'servico_id' => 1
+            'servico_id' => 1,
         ];
 
         $response = $this->withoutMiddleware()->postJson('/api/encomenda', $payload); // Requisição sem passar pelo Middleware de autenticação de token

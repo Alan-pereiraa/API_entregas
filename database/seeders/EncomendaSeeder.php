@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Encomenda;
 use Illuminate\Database\Seeder;
 
-
 class EncomendaSeeder extends Seeder
 {
     /**

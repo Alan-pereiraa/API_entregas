@@ -19,7 +19,7 @@ class ServicoSeeder extends Seeder
                 'preco_base' => 25.50,
                 'prazo_dias' => 1,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
             [
                 'nome' => 'Serviço Padrão',
@@ -27,7 +27,7 @@ class ServicoSeeder extends Seeder
                 'preco_base' => 15.00,
                 'prazo_dias' => 3,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
             [
                 'nome' => 'Entrega Econômica',
@@ -35,7 +35,7 @@ class ServicoSeeder extends Seeder
                 'preco_base' => 8.75,
                 'prazo_dias' => 7,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
             [
                 'nome' => 'Entrega Internacional',
@@ -43,7 +43,7 @@ class ServicoSeeder extends Seeder
                 'preco_base' => 99.99,
                 'prazo_dias' => 15,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
             [
                 'nome' => 'Entrega Agendada',
@@ -51,7 +51,7 @@ class ServicoSeeder extends Seeder
                 'preco_base' => 35.00,
                 'prazo_dias' => 2,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
         ]);
     }

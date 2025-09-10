@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class UnidadeFactory extends Factory
 {
-
     protected $model = Unidade::class;
 
     public function definition(): array

@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Funcionario;
-use App\Models\User;
-use App\Models\Unidade;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Seeder;
 
 class FuncionarioSeeder extends Seeder
 {

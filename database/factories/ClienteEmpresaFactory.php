@@ -2,18 +2,16 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-
 use App\Models\Cliente;
 use App\Models\ClienteEmpresa;
 use Faker\Provider\pt_BR\Company;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ClienteEmpresa>
  */
 class ClienteEmpresaFactory extends Factory
 {
-
     protected $model = ClienteEmpresa::class;
 
     public function definition(): array

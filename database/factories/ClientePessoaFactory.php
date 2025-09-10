@@ -2,15 +2,13 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Cliente;
 use App\Models\ClientePessoa;
 use Faker\Provider\pt_BR\Person;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClientePessoaFactory extends Factory
 {
-
     protected $model = ClientePessoa::class;
 
     public function definition(): array
@@ -22,7 +20,7 @@ class ClientePessoaFactory extends Factory
         return [
             'nome' => $this->faker->name(),
             'cpf' => $this->faker->unique()->cpf(false),
-            'cliente_id' => Cliente::factory()->pessoa()->create()->id
+            'cliente_id' => Cliente::factory()->pessoa()->create()->id,
         ];
     }
 }

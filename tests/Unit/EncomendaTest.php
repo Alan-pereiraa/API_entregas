@@ -2,11 +2,11 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use App\Models\Cliente;
 use App\Models\Encomenda;
 use App\Models\Servico;
-use App\Models\Cliente;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class EncomendaTest extends TestCase
 {
@@ -41,14 +41,14 @@ class EncomendaTest extends TestCase
     }
 
     // Verfica se a encomenda é criada sem um cliente destintário
-    public function test_created_encomenda_isNull_cliente_destino ()
+    public function test_created_encomenda_is_null_cliente_destino()
     {
         $this->expectException(\Illuminate\Database\QueryException::class); // Lança um erro "QueryException" no caso de erro
         Encomenda::create([
-            'servico_id'=> 1,
+            'servico_id' => 1,
             // 'cliente_remetente_id' => ,
             'cliente_destinatario_id' => 2,
-            'peso' => 2.0
+            'peso' => 2.0,
         ]);
     }
 
@@ -62,7 +62,7 @@ class EncomendaTest extends TestCase
             'servico_id' => $servico->id,
             'cliente_remetente_id' => 1,
             'cliente_destinatario_id' => 2,
-            'peso' => 3.0
+            'peso' => 3.0,
         ]);
 
         $this->assertEquals($servico->id, $encomenda->servico->id);

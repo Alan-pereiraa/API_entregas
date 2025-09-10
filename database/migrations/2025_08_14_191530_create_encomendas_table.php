@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('encomendas', function (Blueprint $table) {
             $table->id();
             $table->decimal('peso', 8, 2);
-            $table->unsignedBigInteger('cliente_remetente_id'); 
+            $table->unsignedBigInteger('cliente_remetente_id');
             $table->foreign('cliente_remetente_id')->references('id')->on('clientes')->onDelete('cascade'); // FK
-            $table->unsignedBigInteger('cliente_destinatario_id'); 
+            $table->unsignedBigInteger('cliente_destinatario_id');
             $table->foreign('cliente_destinatario_id')->references('id')->on('clientes')->onDelete('cascade'); // FK
             $table->unsignedBigInteger('servico_id');
-            $table->foreign('servico_id')->references('id')->on('servicos'); //FK
+            $table->foreign('servico_id')->references('id')->on('servicos'); // FK
             $table->timestamps();
         });
     }

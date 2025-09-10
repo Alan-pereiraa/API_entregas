@@ -2,15 +2,14 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Cliente;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cliente>
  */
 class ClienteFactory extends Factory
 {
-
     protected $model = Cliente::class;
 
     public function definition(): array
@@ -25,14 +24,14 @@ class ClienteFactory extends Factory
     public function empresa(): Factory
     {
         return $this->state(fn (array $attributes) => [
-            'tipo' => 'empresa'
+            'tipo' => 'empresa',
         ]);
     }
 
     public function pessoa(): Factory
     {
         return $this->state(fn (array $attributes) => [
-            'tipo' => 'pessoa'
+            'tipo' => 'pessoa',
         ]);
     }
 }

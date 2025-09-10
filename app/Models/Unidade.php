@@ -8,18 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Unidade extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'telefone',
         'endereco',
-        'unidade_ativa', 
-        'agencia_id' 
+        'unidade_ativa',
+        'agencia_id',
     ];
 
     protected $casts = [
-        'unidade_ativa' => 'boolean'
+        'unidade_ativa' => 'boolean',
     ];
 
-    public function agencia (){
+    public function agencia()
+    {
         return $this->belongsTo(Agencia::class);
     }
 }

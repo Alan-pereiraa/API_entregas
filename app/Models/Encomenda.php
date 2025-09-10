@@ -16,23 +16,28 @@ class Encomenda extends Model
         'servico_id', // FK
     ];
 
-    public function destinatario (){
+    public function destinatario()
+    {
         return $this->belongsTo(Cliente::class, 'cliente_destinatario_id');
     }
 
-    public function remetente (){
+    public function remetente()
+    {
         return $this->belongsTo(Cliente::class, 'cliente_remetente_id');
     }
 
-    public function servico (){
+    public function servico()
+    {
         return $this->belongsTo(Servico::class);
     }
 
-    public function rastreamento (){
+    public function rastreamento()
+    {
         return $this->hasMany(Rastreamento::class);
     }
 
-    public function frete (){
+    public function frete()
+    {
         return $this->hasOne(Frete::class);
     }
 
@@ -40,5 +45,4 @@ class Encomenda extends Model
     {
         return $this->created_at->copy()->addDays($this->servico->prazo_dias);
     }
-
 }
