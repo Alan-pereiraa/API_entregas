@@ -35,6 +35,7 @@ class ServicoController extends Controller
                 'regex:/^\d+(\.\d{1,2})?$/',
             ],
             'prazo_dias' => 'required|integer|min:1|max:100',
+            'tipo_calculo' => 'sometimes|string|in:por_peso,por_faixa,preco_fixo,por_distancia',
         ]);
 
         $servico = Servico::create($validated);
@@ -56,6 +57,7 @@ class ServicoController extends Controller
                 'regex:/^\d+(\.\d{1,2})?$/',
             ],
             'prazo_dias' => 'sometimes|integer|min:1|max:100',
+            'tipo_calculo' => 'sometimes|string|in:por_peso,por_faixa,preco_fixo,por_distancia',
         ]);
 
         $servico->update($validated);
