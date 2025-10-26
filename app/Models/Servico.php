@@ -14,6 +14,7 @@ class Servico extends Model
         'descricao',
         'preco_base',
         'prazo_dias',
+        'tipo_calculo',
     ];
 
     public function encomenda()

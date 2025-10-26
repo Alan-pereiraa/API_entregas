@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Encomenda;
+use App\Models\Frete;
 use App\Models\Unidade;
+use App\Services\FreteService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -66,9 +68,22 @@ class EncomendaController extends Controller
         $rastreios = $encomenda->rastreamento()->createMany($rastreios);
         $encomenda['rastreios'] = $rastreios;
 
+        $freteService = new FreteService();
+        $valorFrete = $freteService->calcularFreteArredondado($encomenda);
+
+        $frete = Frete::create([
+            'encomenda_id' => $encomenda->id,
+            'valor' => $valorFrete,
+        ]);
+
         return response()->json([
             'encomenda' => $encomenda,
             'data_prevista_entrega' => $encomenda->dataPrevistaEntrega()->toDateString(),
+            'frete' => [
+                'id' => $frete->id,
+                'valor' => $valorFrete,
+                'tipo_calculo' => $encomenda->servico->tipo_calculo ?? 'por_peso',
+            ],
         ], 201);
     }
 

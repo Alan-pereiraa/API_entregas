@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Encomenda;
 use App\Models\Frete;
+use App\Services\FreteService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -35,7 +37,7 @@ class FreteController extends Controller
         $validated = $request->validate([
             'encomenda_id' => 'required|unique:fretes|exists:encomendas,id',
             'valor' => [
-                'required',
+                'nullable',
                 'numeric',
                 'min:0',
                 'max:100000',
@@ -43,9 +45,18 @@ class FreteController extends Controller
             ],
         ]);
 
+        if (!isset($validated['valor']) || $validated['valor'] === null) {
+            $encomenda = Encomenda::findOrFail($validated['encomenda_id']);
+            $freteService = new FreteService();
+            $validated['valor'] = $freteService->calcularFreteArredondado($encomenda);
+        }
+
         $frete = Frete::create($validated);
 
-        return response()->json($frete, 201);
+        return response()->json([
+            'frete' => $frete,
+            'calculado_automaticamente' => !$request->has('valor'),
+        ], 201);
     }
 
     public function update(Request $request, string $id): JsonResponse
